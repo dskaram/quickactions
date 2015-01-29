@@ -2,6 +2,7 @@ define([
   "lib/underscore",
   "lib/backbone",
   "view/Keys",
+  "view/Matcher",
   "view/Selection",
   "view/Navigation",
   "doT!view/templates/QuickActionView",
@@ -11,6 +12,7 @@ define([
     _,
     Backbone,
     Keys,
+    Matcher,
     Selection,
     Navigation,
     QuickActionViewTemplate,
@@ -41,7 +43,7 @@ define([
 
     initialize: function(options) {
       this.layers= options.layers;
-      
+
       var self= this;
 
       options.global.on("change:breadcrumb", function(model, breadcrumbs) {
@@ -72,10 +74,11 @@ define([
 
         layer.on("change:entries", function(model, entries) {
           var selection= model.get("selection");
+          var filter= model.get("searchTerm");
           layerContainer.html(QuickActionListTemplate({
                 entries: entries.map(function(entry) {
-                          return { 
-                            label: entry.get("label"),
+                          return {
+                            label: Matcher.highlight(entry.get("label"), filter),
                             isProvider: entry.isProvider()
                           };
                         }),
@@ -84,7 +87,7 @@ define([
         });
       });
 
-      var pendingRemoval= []; // user might be navigating faster than the transformation
+      var pendingRemoval= []; // user might be navigating faster than the transform animation
       this.layers.on("remove", function() {
         var entries= self.listView.children();
         var removed= entries.eq(entries.length - pendingRemoval.length - 1);
@@ -140,9 +143,9 @@ define([
               Keys.stopEvent(e);
               this.trigger(this.NAVIGATION, Navigation.ROLLBACK);
               break;
-      }      
+      }
     },
-	
+
   	_onClick: function(e) {
       // do not stop propagation. parent needs to refocus
   		this.trigger(this.NAVIGATION, Navigation.EXECUTE);

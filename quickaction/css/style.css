@@ -54,6 +54,10 @@
   color: white;
 }
 
+.list-view .listEntries .listEntry .matched {
+  font-weight: bold;
+}
+
 .list-view .listEntries .listEntry.provider:after {
   content: "►";
   position: absolute;

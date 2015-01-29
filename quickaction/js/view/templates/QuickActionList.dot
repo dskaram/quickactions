@@ -1,3 +1,3 @@
 {{~it.entries :value:index}}
-	<li class="listEntry{{? value.isProvider }} provider{{?}}{{? index == it.selection }} selected{{?}}">{{!value.label}}</li>
+	<li class="listEntry{{? value.isProvider }} provider{{?}}{{? index == it.selection }} selected{{?}}">{{= value.label }}</li>
 {{~}}

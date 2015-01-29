@@ -36,7 +36,7 @@ define([
                           url: path + file
                         });
           }).filter(function(file) {
-            return file.get("label").indexOf(filter) !== -1;
+            return file.get("label").toLowerCase().indexOf(filter.toLowerCase()) !== -1;
           });
 
           result.resolve(new Backbone.Collection(files));

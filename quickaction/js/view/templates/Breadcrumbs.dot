@@ -1,0 +1,4 @@
+<li class="initial"></li>
+{{~it :value:index}}
+ 	<li class="breadcrumb">{{! value }}</li>
+{{~}}

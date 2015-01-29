@@ -1,0 +1,15 @@
+{
+  "name": "quickaction",
+  "version": "0.1.0",
+  "description": "Serves quickaction files and offers exposing a subset of folders from the machine.",
+  "author": "David Karam <dskaram@gmail.com>",
+  "main": "lib/foo.js",
+  "dependencies": {
+    "async": "*",
+    "lodash": "*",
+    "express": "4.2.x"
+  },
+  "private": true,
+  "analyze": true,
+  "license": "MIT"
+}

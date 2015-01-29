@@ -1,0 +1,61 @@
+.main-container {
+  margin-top: 100px;
+}
+
+
+
+.main-container {
+  width: 500px;
+  margin: auto;
+  border: 2px solid #2196F3;
+  border-radius: 15px;
+}
+
+.main-container * {
+  padding: 0;
+  margin: 0;
+}
+
+.main-container > * {
+  width: 100%;
+}
+
+.input-view {
+  height: 100px;
+  white-space: pre;
+  text-decoration: underline;
+  font-size: 25px;
+  line-height: 80px;
+  text-align: center;
+}
+
+.list-view {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.list-view .listEntries {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  list-style-type: none;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.list-view .listEntries .listEntry {
+	cursor: pointer;
+  padding: 10px;
+}
+
+.list-view .listEntries .listEntry.selected {
+  background: #2196F3;
+  color: white;
+}
+
+.list-view .listEntries .listEntry.provider:after {
+  content: "►";
+  position: absolute;
+  right: 10px;
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<title>Test'em</title>
+<link rel="stylesheet" href="/testem/mocha.css">
+<script src="/testem/mocha.js"></script>
+<script src="/testem.js"></script>
+<script>mocha.setup('bdd')</script>
+<script src="/bower_components/chai/chai.js"></script>
+<script src="/bower_components/requirejs/require.js"></script>
+{{#styles}}<link rel="stylesheet" href="{{.}}">{{/styles}}
+</head>
+<body>
+<div id="mocha"></div>
+
+<script>
+require.config({
+  baseUrl: '../quickaction/js',
+  paths: {
+    'jquery': 'lib/jquery',
+    'underscore': 'lib/underscore',
+    'backbone': 'lib/backbone',
+    'doTCompiler': "lib/doTCompiler",
+    'text':  'lib/text',
+    'doT': 'lib/doT'
+  },
+  shim: {
+    'underscore': {
+      exports: '_'
+    },
+    'backbone': {
+      deps: ["underscore", "jquery"],
+      exports: 'Backbone'
+    }
+  }
+});
+
+</script>
+
+<script>
+  var files = [];
+  {{#serve_files}}files.push("../{{{src}}}");{{/serve_files}}
+
+  require(files, function() {
+    mocha.run();
+  });
+</script>
+</body>
+</html>

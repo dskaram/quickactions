@@ -1,6 +1,6 @@
 define([
-  "lib/underscore",
-  "lib/backbone",
+  "underscore",
+  "backbone",
   "models/Provider",
 ], function(
   _,

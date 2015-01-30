@@ -1,6 +1,6 @@
 define([
-  "lib/underscore",
-  "lib/backbone",
+  "underscore",
+  "backbone",
   "providers/ddg/DDGCategoryProvider",
   "models/Provider",
 	"models/ProviderEntry"

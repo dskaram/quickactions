@@ -1,16 +1,18 @@
 require.config({
   paths: {
     'jquery': 'lib/jquery',
+    'underscore': 'lib/underscore',
+    'backbone': 'lib/backbone',
     'doTCompiler': "lib/doTCompiler",
     'text':  'lib/text',
     'doT': 'lib/doT'
   },
   shim: {
-    'lib/underscore': {
+    'underscore': {
       exports: '_'
     },
-    'lib/backbone': {
-      deps: ["lib/underscore", "jquery"],
+    'backbone': {
+      deps: ["underscore", "jquery"],
       exports: 'Backbone'
     }
   }
@@ -18,8 +20,8 @@ require.config({
 
 require(
   ["jquery",
-    "lib/underscore",
-    "lib/backbone",
+    "underscore",
+    "backbone",
     "providers/ddg/DDGProvider",
     "providers/fs/FolderProvider",
     "QuickAction"

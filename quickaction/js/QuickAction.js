@@ -1,6 +1,6 @@
 define([
 	"jquery",
-	"lib/backbone",
+	"backbone",
 	"util/ListBindings",
     "view/QuickActionView",
     "view/Selection",
@@ -30,7 +30,7 @@ define([
 			var providers= this._providers= new Backbone.Collection();
 			ListBindings.bindWithAdapter(providers, layers, function(provider) {
 				var layer= new LayerViewModel();
-				
+
 				layer.on("change:searchTerm", function(model, searchTerm) {
 					provider.last()
 							.retrieve(searchTerm)
@@ -89,7 +89,7 @@ define([
 			view.on(view.SELECTION, _.bind(function(selection) {
 				var currentSelection= layers.last().get("selection");
 				var numEntries= layers.last().get("entries").length;
-				
+
 				switch(selection) {
 			        case Selection.DOWN:
 			        	layers.last().set("selection", currentSelection === numEntries - 1 ? 0 : currentSelection + 1);
@@ -107,7 +107,7 @@ define([
 				var currentSelection= layers.last().get("selection");
 				var entries= layers.last().get("entries");
 				var entry= entries.at(currentSelection);
-				
+
 				switch(direction) {
 			         case Navigation.EXECUTE:
 			         	if (entry.isProvider()) {

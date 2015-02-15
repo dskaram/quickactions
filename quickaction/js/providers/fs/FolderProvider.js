@@ -17,7 +17,7 @@ define([
     initialize: function(model, path) {
       Provider.prototype.initialize.apply(this, arguments);
 
-      this._path= path || "/explore/";
+      this._path= path || "/explore";
     },
 
     accepts: function() {
@@ -35,7 +35,7 @@ define([
                         new FolderProvider({ label: file.label }, path + "/" + file.label) :
                         new ProviderEntry({
                           label: file.label,
-                          url: path + file
+                          url: path + "/" + file.label
                         });
           }).filter(function(file) {
             return file.get("label").toLowerCase().indexOf(filter.toLowerCase()) !== -1;

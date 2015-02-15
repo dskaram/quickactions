@@ -4,7 +4,7 @@ var async = require('async');
 var _ = require('lodash');
 var app = express();
 
-app.get('/explore/*', function (req, res) {
+app.get('/explore*', function (req, res) {
 	var requestedPath= __dirname + "/content/" + req.params[0] + "/";
 	if (requestedPath.indexOf("..") !== -1) {
 		return res.json([]);
@@ -22,12 +22,16 @@ app.get('/explore/*', function (req, res) {
 			fs.readdir(requestedPath, callback);
 		}
 	)(null, function(error, stats) {
-		res.json(stats.map(function(stat, index) {
-			return {
-				label: files[index],
-				isDirectory: stat.isDirectory()
-			}
-		}));
+		if (error && error.code === "ENOTDIR") {
+			res.download(requestedPath.substring(0, requestedPath.length - 1));
+		} else {
+			res.json(stats.map(function(stat, index) {
+				return {
+					label: files[index],
+					isDirectory: stat.isDirectory()
+				}
+			}));
+		}
 	});
 });
 

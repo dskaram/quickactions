@@ -57,7 +57,7 @@ define([
     retrieve: function(filter) {
       filter= ADAPTER(filter);
       var result= $.Deferred();
-      var ddgQuery= "http://api.duckduckgo.com/?q=" + filter + "&format=json";
+      var ddgQuery= "//api.duckduckgo.com/?q=" + filter + "&format=json";
 
       $.get(ddgQuery,function(j) {},'jsonp')
         .done(function(response) {

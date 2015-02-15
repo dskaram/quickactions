@@ -25,16 +25,25 @@ require(
     "util/ScrollIntoView",
     "providers/matching/MatchingProvider",
     "providers/ddg/DDGProvider",
+    "providers/feedzilla/FeedZillaCategoryProvider",
     "providers/fs/FolderProvider",
     "providers/nytimes/NYTimesProvider",
     "QuickAction"
   ],
-  function($, _, B, SIV, MatchingProvider, DDGProvider, FolderProvider, NYTimesProvider, QuickAction) {
+  function($, _, B, SIV,
+          MatchingProvider,
+          DDGProvider,
+          FeedZillaCategoryProvider,
+          FolderProvider,
+          NYTimesProvider,
+          QuickAction
+  ) {
     $(function() {
       QuickAction
         .create($("#demo"))
         .provider(new MatchingProvider()
                         .add(new DDGProvider())
+                        .add(new FeedZillaCategoryProvider())
                         .add(new NYTimesProvider())
                         .add(new FolderProvider())
                   )

@@ -26,14 +26,16 @@ require(
     "providers/matching/MatchingProvider",
     "providers/ddg/DDGProvider",
     "providers/fs/FolderProvider",
+    "providers/nytimes/NYTimesProvider",
     "QuickAction"
   ],
-  function($, _, B, SIV, MatchingProvider, DDGProvider, FolderProvider, QuickAction) {
+  function($, _, B, SIV, MatchingProvider, DDGProvider, FolderProvider, NYTimesProvider, QuickAction) {
     $(function() {
       QuickAction
         .create($("#demo"))
         .provider(new MatchingProvider()
                         .add(new DDGProvider())
+                        .add(new NYTimesProvider())
                         .add(new FolderProvider())
                   )
         .bind();

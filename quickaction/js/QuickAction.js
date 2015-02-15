@@ -72,8 +72,8 @@ define([
 			providers.on("remove", updateBreadcrumbs);
 
 			var updateResults= function(model) {
-				var filter= layers.last().get("searchTerm");
-				layers.last().trigger("change:searchTerm", layers.last(), filter);	// term didn't change, but we still want to update
+				var filter= layers.active().get("searchTerm");
+				layers.active().trigger("change:searchTerm", layers.active(), filter);	// term didn't change, but we still want to update
 			};
 			providers.on("add", updateResults);
 			providers.on("remove", updateResults);
@@ -91,33 +91,35 @@ define([
 		_bindViewEvents: function(global, layers, view) {
 
 			view.on(view.SELECTION, _.bind(function(selection) {
-				var currentSelection= layers.last().get("selection");
-				var numEntries= layers.last().get("entries").length;
+				var currentSelection= layers.active().get("selection");
+				var numEntries= layers.active().get("entries").length;
 
 				switch(selection) {
 			        case Selection.DOWN:
-			        	layers.last().set("selection", currentSelection === numEntries - 1 ? 0 : currentSelection + 1);
+			        	layers.active().set("selection", currentSelection === numEntries - 1 ? 0 : currentSelection + 1);
 						break;
 			        case Selection.UP:
-			         	layers.last().set("selection", currentSelection === 0 ? numEntries - 1 : currentSelection - 1);
+			         	layers.active().set("selection", currentSelection === 0 ? numEntries - 1 : currentSelection - 1);
               			break;
 					default:
-			         	layers.last().set("selection", typeof selection === "number" ? selection : 0);
+			         	layers.active().set("selection", typeof selection === "number" ? selection : 0);
               	}
 
 			}, this));
 
 			view.on(view.NAVIGATION, _.bind(function(direction) {
-				var currentSelection= layers.last().get("selection");
-				var entries= layers.last().get("entries");
+				var currentSelection= layers.active().get("selection");
+				var entries= layers.active().get("entries");
 				var entry= entries.at(currentSelection);
 
 				switch(direction) {
 			         case Navigation.EXECUTE:
 			         	if (entry.isProvider()) {
 				         	this._providers.add(entry);
-			         	}
-              			break;
+			         	} else {
+									entry.execute();
+								}
+          			break;
 			         case Navigation.ROLLBACK:
 			         	direction= 1;
 					default:
@@ -125,18 +127,17 @@ define([
 				         	this._providers.remove(this._providers.last());
 				         	direction--;
 				        }
-              	}
-
+        }
 			}, this));
 
 			view.on(view.KEY, _.bind(function(key) {
-				layers.last().set("searchTerm", layers.last().get("searchTerm") + key);
+				layers.active().set("searchTerm", layers.active().get("searchTerm") + key);
 			}, this));
 
 			view.on(view.BACKSPACE, _.bind(function() {
-				var prev= layers.last().get("searchTerm");
+				var prev= layers.active().get("searchTerm");
 				if (prev) {
-					layers.last().set("searchTerm", prev.substr(0, prev.length - 1));
+					layers.active().set("searchTerm", prev.substr(0, prev.length - 1));
 				}
 			}, this));
 		}
@@ -145,7 +146,11 @@ define([
 	QuickAction.create= function(el) {
 		el= el || $("<div></div>");
 
-		var layers= new Backbone.Collection();
+		var layers= new (Backbone.Collection.extend({
+			active: function() {
+				return this.last();
+			}
+		}))();
 		var global= new Backbone.Model({
 			breadcrumb: []
 		});

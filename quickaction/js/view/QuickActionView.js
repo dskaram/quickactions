@@ -116,10 +116,6 @@ define([
       return this;
     },
 
-    activeLayer: function() {
-      return this.layers.last();
-    },
-
     focus: function() {
       this.$(".input-view").focus();
     },
@@ -139,10 +135,17 @@ define([
               this.trigger(this.SELECTION, Selection.DOWN);
               break;
           case Keys.ENTER:
+            Keys.stopEvent(e);
+            this.trigger(this.NAVIGATION, Navigation.EXECUTE);
+            break;
           case Keys.RIGHT_ARROW:
-              Keys.stopEvent(e);
+            Keys.stopEvent(e);
+            var activeLayer= this.layers.active();
+            var isProvider= activeLayer.get("entries").at(activeLayer.get("selection")).isProvider();
+            if (isProvider) {
               this.trigger(this.NAVIGATION, Navigation.EXECUTE);
-              break;
+            }
+            break;
           case Keys.LEFT_ARROW:
               Keys.stopEvent(e);
               this.trigger(this.NAVIGATION, Navigation.ROLLBACK);

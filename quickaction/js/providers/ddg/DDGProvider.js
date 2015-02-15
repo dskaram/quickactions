@@ -2,8 +2,8 @@ define([
   "underscore",
   "backbone",
   "providers/ddg/DDGCategoryProvider",
-  "models/Provider",
-	"models/ProviderEntry"
+  "providers/Provider",
+	"providers/ProviderEntry"
 ], function(
   _,
   Backbone,
@@ -11,6 +11,11 @@ define([
   Provider,
 	ProviderEntry
 ) {
+
+  var ACTIVATOR= "? ";
+  var ADAPTER= function(filter) {
+    return filter.substring(ACTIVATOR.length);
+  };
 
   var directResults= function(response) {
     var results= _.filter(response, function(entry) {
@@ -37,7 +42,20 @@ define([
 
   return Provider.extend({
 
+    debounced: function() {
+      return true;
+    },
+
+    adapter: function() {
+      return ADAPTER;
+    },
+
+    accepts: function(filter) {
+      return filter.indexOf(ACTIVATOR) !== -1;
+    },
+
     retrieve: function(filter) {
+      filter= ADAPTER(filter);
       var result= $.Deferred();
       var ddgQuery= "http://api.duckduckgo.com/?q=" + filter + "&format=json";
 

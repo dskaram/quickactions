@@ -2,8 +2,8 @@ define([
   "underscore",
   "backbone",
   "providers/ddg/DDGCategoryProvider",
-  "models/Provider",
-	"models/ProviderEntry"
+  "providers/Provider",
+	"providers/ProviderEntry"
 ], function(
   _,
   Backbone,
@@ -12,14 +12,16 @@ define([
 	ProviderEntry
 ) {
 
-  var superInit= Provider.prototype.initialize;
-
   var FolderProvider= Provider.extend({
 
     initialize: function(model, path) {
-      superInit.apply(this, arguments);
+      Provider.prototype.initialize.apply(this, arguments);
 
       this._path= path || "/explore/";
+    },
+
+    accepts: function() {
+      return true;
     },
 
     retrieve: function(filter) {

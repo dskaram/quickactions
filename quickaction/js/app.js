@@ -22,15 +22,19 @@ require(
   ["jquery",
     "underscore",
     "backbone",
+    "providers/matching/MatchingProvider",
     "providers/ddg/DDGProvider",
     "providers/fs/FolderProvider",
     "QuickAction"
   ],
-  function($, _, B, DDGProvider, FolderProvider, QuickAction) {
+  function($, _, B, MatchingProvider, DDGProvider, FolderProvider, QuickAction) {
     $(function() {
       QuickAction
         .create($("#demo"))
-        .provider(new FolderProvider())
+        .provider(new MatchingProvider()
+                        .add(new DDGProvider())
+                        .add(new FolderProvider())
+                  )
         .bind();
         ;
     });

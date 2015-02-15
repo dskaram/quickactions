@@ -1,8 +1,8 @@
 define([
   "underscore",
   "backbone",
-  "models/Provider",
-	"models/ProviderEntry"
+  "providers/Provider",
+	"providers/ProviderEntry"
 ], function(
   _,
   Backbone,
@@ -10,12 +10,10 @@ define([
   ProviderEntry
 ) {
 
-  var superInit= Provider.prototype.initialize;
-
   return Provider.extend({
 
     initialize: function(props, topics) {
-      superInit.apply(this, arguments);
+      Provider.prototype.initialize.apply(this, arguments);
       this.topics= topics;
     },
 
@@ -23,9 +21,9 @@ define([
       return $.Deferred()
                       .resolve(new Backbone.Collection(
                         _.map(this.topics, function(topic) {
-                          return new ProviderEntry({ 
+                          return new ProviderEntry({
                             label: topic.Text,
-                            url: topic.FirstUrl 
+                            url: topic.FirstUrl
                           });
                         })
                       ));

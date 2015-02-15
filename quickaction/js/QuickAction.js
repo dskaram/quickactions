@@ -14,11 +14,13 @@ define([
 	Navigation
 ) {
 
+	var USER_TYPED_INTERVAL= 350;	// msec
 	var LayerViewModel= Backbone.Model.extend({
 		defaults: {
 			entries: new Backbone.Collection(),
 			selection: 0,
-			searchTerm: ""
+			searchTerm: "",
+			searchAdapter: _.identity
 		}
 	});
 
@@ -31,13 +33,15 @@ define([
 			ListBindings.bindWithAdapter(providers, layers, function(provider) {
 				var layer= new LayerViewModel();
 
-				layer.on("change:searchTerm", function(model, searchTerm) {
-					provider.last()
+				layer.set("searchAdapter", provider.adapter());
+				var debounceSearch= provider.debounced() ? _.debounce : _.identity;
+				layer.on("change:searchTerm", debounceSearch.call(_, function(model, searchTerm) {
+					provider
 							.retrieve(searchTerm)
 							.done(_.bind(function(entries) {
 								layer.set("entries", entries);
 							}, this));
-				});
+				}, USER_TYPED_INTERVAL));
 
 				layer.on("change:entries", function(model, entries) {
 					var originalSelection= layer.get("selection");

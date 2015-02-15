@@ -68,17 +68,20 @@ define([
 
         layer.on("change:selection", function(model, index) {
           var entries= layerContainer.find(".listEntry");
+          var selectedElement= entries.eq(index);
+
           entries.removeClass("selected");
-          entries.eq(index).addClass("selected");
+          selectedElement.addClass("selected");
         });
 
         layer.on("change:entries", function(model, entries) {
           var selection= model.get("selection");
           var filter= model.get("searchTerm");
+          var adapter= model.get("searchAdapter");
           layerContainer.html(QuickActionListTemplate({
                 entries: entries.map(function(entry) {
                           return {
-                            label: Matcher.highlight(entry.get("label"), filter),
+                            label: Matcher.highlight(entry.get("label"), adapter(filter)),
                             isProvider: entry.isProvider()
                           };
                         }),

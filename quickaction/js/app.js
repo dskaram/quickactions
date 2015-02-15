@@ -22,12 +22,13 @@ require(
   ["jquery",
     "underscore",
     "backbone",
+    "util/ScrollIntoView",
     "providers/matching/MatchingProvider",
     "providers/ddg/DDGProvider",
     "providers/fs/FolderProvider",
     "QuickAction"
   ],
-  function($, _, B, MatchingProvider, DDGProvider, FolderProvider, QuickAction) {
+  function($, _, B, SIV, MatchingProvider, DDGProvider, FolderProvider, QuickAction) {
     $(function() {
       QuickAction
         .create($("#demo"))

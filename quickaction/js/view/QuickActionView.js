@@ -72,6 +72,7 @@ define([
 
           entries.removeClass("selected");
           selectedElement.addClass("selected");
+          selectedElement.scrollIntoViewIfNeeded();
         });
 
         layer.on("change:entries", function(model, entries) {

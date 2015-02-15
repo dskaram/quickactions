@@ -2,7 +2,7 @@
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
-	border: 2px solid #2196F3;
+	border: 2px solid #3b88c3;
 	border-width: 2px 0px;
 	height: 36px;
 	line-height: 36px;
@@ -41,16 +41,16 @@
 .breadcrumbs .breadcrumb:after {
 	content: '';
 	position: absolute;
-	top: 0; 
+	top: 0;
 	right: -18px;
-	width: 36px; 
+	width: 36px;
 	height: 36px;
 	transform: scale(0.707) rotate(45deg);
 	z-index: 1;
 	background: #666;
 	background: linear-gradient(135deg, #666, #333);
-	box-shadow: 
-		2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+	box-shadow:
+		2px -2px 0 2px rgba(0, 0, 0, 0.4),
 		3px -3px 0 2px rgba(255, 255, 255, 0.1);
 	border-radius: 0 5px 0 50px;
 }
@@ -59,15 +59,15 @@
 	position: absolute;
 	top: 0;
 	left: -18px;
-	width: 36px; 
+	width: 36px;
 	height: 36px;
 	transform: scale(0.707) rotate(45deg);
 	cursor: pointer;
 	z-index: 1;
 	background: #666;
 	background: linear-gradient(135deg, #666, #333);
-	box-shadow: 
-		2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+	box-shadow:
+		2px -2px 0 2px rgba(0, 0, 0, 0.4),
 		3px -3px 0 2px rgba(255, 255, 255, 0.1);
 	border-radius: 0 5px 0 50px;
 }
@@ -81,15 +81,8 @@
 	color: black;
 }
 
-.flat .breadcrumb:hover, .flat .breadcrumb.active, 
+.flat .breadcrumb:hover, .flat .breadcrumb.active,
 .flat .breadcrumb:hover:after, .flat .breadcrumb.active:after{
 	background: #4FC3F7;
 	color: white;
 }
-
-
-
-
-
-
-

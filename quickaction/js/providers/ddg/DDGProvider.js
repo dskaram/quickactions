@@ -51,7 +51,7 @@ define([
     },
 
     accepts: function(filter) {
-      return filter.indexOf(ACTIVATOR) !== -1 && this.adapter()(filter).trim().length > 0;
+      return filter.indexOf(ACTIVATOR) === 0 && this.adapter()(filter).trim().length > 0;
     },
 
     retrieve: function(filter) {

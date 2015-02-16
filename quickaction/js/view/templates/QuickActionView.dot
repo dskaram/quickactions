@@ -1,5 +1,10 @@
-<div class="input-view" tabIndex="0"></div>
-<ol class="breadcrumb">
-	<li class="initial active">></li>
-</ol>
-<div class="list-view"></div>
+<div class="input-group">
+	<span class="input-group-addon" id="basic-addon1" data-toggle="popover" data-placement="bottom">@</span>
+	<input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+</div>
+<div class="content-popover">
+	<ol class="breadcrumb">
+		<li class="initial active">></li>
+	</ol>
+	<div class="list-view"></div>
+</div>

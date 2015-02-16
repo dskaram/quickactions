@@ -1,3 +1,6 @@
 {{~it.entries :value:index}}
-	<li class="listEntry{{? value.isProvider }} provider{{?}}{{? index == it.selection }} selected{{?}}">{{= value.label }}</li>
+	<li class="listEntry{{? index == it.selection }} selected{{?}}">
+		{{= value.label }}
+		{{? value.isProvider }}<span class="provider-icon glyphicon glyphicon-menu-right"></span>{{?}}
+	</li>
 {{~}}

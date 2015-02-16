@@ -32,8 +32,8 @@ define([
     className: "main-container",
 
     events: {
-      "keydown .input-view": "_onKeyDown",
-      "keypress .input-view": "_onKeyPress",
+      "keydown .input-group input": "_onKeyDown",
+      "keypress .input-group input": "_onKeyPress",
       "mousemove .listEntries": "_onMouseMove",
       "click": "focus",
       "click .listEntry": "_onClick",
@@ -58,7 +58,7 @@ define([
         self.listView.append(layerContainer);
 
         layer.on("change:searchTerm", function(model, searchTerm) {
-          self.inputBox.html(searchTerm);
+          self.inputBox.val(searchTerm);
         });
 
         layer.on("change:shown", function(model, shown) {
@@ -79,7 +79,8 @@ define([
           var selection= model.get("selection");
           var filter= model.get("searchTerm");
           var adapter= model.get("searchAdapter");
-          layerContainer.html(QuickActionListTemplate({
+
+          var content= QuickActionListTemplate({
                 entries: entries.map(function(entry) {
                           return {
                             label: Matcher.highlight(entry.get("label"), adapter(filter)),
@@ -87,7 +88,9 @@ define([
                           };
                         }),
                 selection: selection
-          }));
+          });
+
+          layerContainer.html(content);
         });
       });
 
@@ -111,13 +114,13 @@ define([
     render: function() {
       this.$el.html(QuickActionViewTemplate({}));
 
-      this.inputBox= this.$el.find(".input-view");
+      this.inputBox= this.$el.find(".input-group input");
       this.listView= this.$el.find(".list-view");
       return this;
     },
 
     focus: function() {
-      this.$(".input-view").focus();
+      this.inputBox.focus();
     },
 
     _onKeyDown: function(e) {

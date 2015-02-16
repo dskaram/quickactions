@@ -1,13 +1,6 @@
 .main-container {
-  margin-top: 100px;
-}
-
-
-
-.main-container {
   width: 500px;
-  margin: auto;
-  border: 2px solid #3b88c3;
+  margin: 100px auto;
   border-radius: 15px;
 }
 
@@ -21,13 +14,12 @@
   width: 100%;
 }
 
-.input-view {
-  height: 100px;
-  white-space: pre;
-  text-decoration: underline;
-  font-size: 25px;
-  line-height: 80px;
-  text-align: center;
+.content-popover {
+    position: relative;
+    top: 10px;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
 }
 
 .list-view {
@@ -49,6 +41,7 @@
 }
 
 .list-view .listEntries .listEntry {
+  position: relative;
 	cursor: pointer;
   width: 100%;
   padding: 10px;
@@ -64,8 +57,8 @@
   text-decoration: underline;
 }
 
-.list-view .listEntries .listEntry.provider:after {
-  content: "►";
+.list-view .listEntries .listEntry .provider-icon {
   position: absolute;
   right: 10px;
+  top: 13px;
 }

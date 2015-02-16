@@ -37,8 +37,8 @@ define([
       "mousemove .listEntries": "_onMouseMove",
       "click": "focus",
       "click .listEntry": "_onClick",
-      "click .breadcrumb:not(.active)": "_targetBreadcrumb",
-      "click .breadcrumbs .initial": "_targetBreadcrumb"
+      "click .breadcrumb li:not(.active)": "_targetBreadcrumb",
+      "click .breadcrumb .initial": "_targetBreadcrumb"
     },
 
     initialize: function(options) {
@@ -47,7 +47,7 @@ define([
       var self= this;
 
       options.global.on("change:breadcrumb", function(model, breadcrumbs) {
-        var node= self.$el.find(".breadcrumbs");
+        var node= self.$el.find(".breadcrumb");
         node.html(Breadcrumbs(breadcrumbs));
         node.children().last().addClass("active");
       });
@@ -160,7 +160,7 @@ define([
 
     _targetBreadcrumb: function(e) {
       // do not stop propagation. parent needs to refocus
-      this.layers.length > 1 && this.trigger(this.NAVIGATION, this.layers.length - $(e.target).index() - 1);
+      this.layers.length > 1 && this.trigger(this.NAVIGATION, this.layers.length - $(e.target).parent().index() - 1);
     },
 
   	_onMouseMove: function(e) {

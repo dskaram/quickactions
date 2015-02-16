@@ -1,5 +1,5 @@
 <div class="input-view" tabIndex="0"></div>
-<ul class="breadcrumbs flat">
-	<li class="initial"></li>
-</ul>
+<ol class="breadcrumb">
+	<li class="initial active">></li>
+</ol>
 <div class="list-view"></div>

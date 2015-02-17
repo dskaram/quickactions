@@ -35,17 +35,18 @@ define([
       return "nyt-provider";
     },
 
-    retrieve: function(filter) {
+    retrieve: _.memoize(function(filter) {
       filter= ADAPTER(filter);
       var result= $.Deferred();
 
-      if (!filter) {
+      var nytQuery= "//api.nytimes.com/svc/search/v2/articlesearch.json?&sort=newest&api-key=" + API_KEY;
 
+      if (filter) {
+        nytQuery+= "&q=" + filter;
       }
 
-      var nytQuery= "//api.nytimes.com/svc/search/v2/articlesearch.json?q=" + filter + "&sort=newest&api-key=" + API_KEY;
 
-      $.get(nytQuery,function(j) {},'jsonp')
+      $.get(nytQuery,function(j) {},'json')
         .done(function(response) {
           result.resolve(new Backbone.Collection(
                               _.map(response.response.docs, function(result) {
@@ -59,7 +60,7 @@ define([
             });
 
       return result;
-    }
+    })
 
   });
 });

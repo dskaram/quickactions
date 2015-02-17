@@ -20,6 +20,7 @@ define([
 			entries: new Backbone.Collection(),
 			selection: 0,
 			searchTerm: "",
+			providerIcon: "glyphicon-search",
 			searchAdapter: _.identity
 		}
 	});
@@ -36,6 +37,7 @@ define([
 				layer.set("searchAdapter", provider.adapter());
 				var debounceSearch= provider.debounced() ? _.debounce : _.identity;
 				layer.on("change:searchTerm", debounceSearch.call(_, function(model, searchTerm) {
+					layer.set("providerIcon", provider.icon(searchTerm));
 					provider
 							.retrieve(searchTerm)
 							.done(_.bind(function(entries) {

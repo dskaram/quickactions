@@ -17,13 +17,17 @@ define([
       this.topics= topics;
     },
 
+    icon: function() {
+      return "ddg-provider";
+    },
+
     retrieve: function(filter) {
       return $.Deferred()
                       .resolve(new Backbone.Collection(
                         _.map(this.topics, function(topic) {
                           return new ProviderEntry({
                             label: topic.Text,
-                            url: topic.FirstUrl
+                            url: topic.FirstURL
                           });
                         })
                       ));

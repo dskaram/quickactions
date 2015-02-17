@@ -48,6 +48,10 @@ define([
       return filter.indexOf(ACTIVATOR) === 0;
     },
 
+    icon: function() {
+      return "feedzilla-provider";
+    },
+
     retrieve: function(filter) {
       filter= ADAPTER(filter);
       var result= $.Deferred();

@@ -28,15 +28,24 @@ define([
     },
 
     accepts: function(filter) {
-      return filter.indexOf(ACTIVATOR) === 0 && this.adapter()(filter).trim().length > 0;
+      return filter.indexOf(ACTIVATOR) === 0;
+    },
+
+    icon: function() {
+      return "nyt-provider";
     },
 
     retrieve: function(filter) {
       filter= ADAPTER(filter);
       var result= $.Deferred();
+
+      if (!filter) {
+
+      }
+
       var nytQuery= "//api.nytimes.com/svc/search/v2/articlesearch.json?q=" + filter + "&sort=newest&api-key=" + API_KEY;
 
-      $.get(nytQuery,function(j) {},'json')
+      $.get(nytQuery,function(j) {},'jsonp')
         .done(function(response) {
           result.resolve(new Backbone.Collection(
                               _.map(response.response.docs, function(result) {

@@ -61,6 +61,12 @@ define([
           self.inputBox.val(searchTerm);
         });
 
+        layer.on("change:providerIcon", function(model, providerIcon) {
+          self.providerPlaceholder.removeClass(this.prevIcon);
+          self.providerPlaceholder.addClass(providerIcon);
+          this.prevIcon= providerIcon;
+        });
+
         layer.on("change:shown", function(model, shown) {
           var translation= -1 * (self.layers.length - 1 - layerIndex) * 100;
           layerContainer.css("transform", "translateX(" + translation + "%)");
@@ -115,6 +121,7 @@ define([
       this.$el.html(QuickActionViewTemplate({}));
 
       this.inputBox= this.$el.find(".input-group input");
+      this.providerPlaceholder= this.$el.find(".input-group .input-group-addon");
       this.listView= this.$el.find(".list-view");
       return this;
     },

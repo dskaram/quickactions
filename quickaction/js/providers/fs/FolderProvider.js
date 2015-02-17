@@ -24,6 +24,10 @@ define([
       return true;
     },
 
+    icon: function() {
+      return "glyphicon-file";
+    },
+
     retrieve: function(filter) {
       var path= this._path;
       var result= $.Deferred();

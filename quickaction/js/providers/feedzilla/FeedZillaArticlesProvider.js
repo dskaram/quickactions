@@ -16,6 +16,10 @@ define([
       return true;
     },
 
+    icon: function() {
+      return "feedzilla-provider";
+    },
+
     retrieve: _.memoize(function(filter) {
       var result= $.Deferred();
       var category= this.get("categoryId");

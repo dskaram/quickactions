@@ -23,6 +23,10 @@ define([
 			throw new Error("Must override accepts");
 		},
 
+		icon: function() {
+			return "glyphicon-search";
+		},
+
     retrieve: function(filter) {
     	throw new Error("Must override retrieve");
     }

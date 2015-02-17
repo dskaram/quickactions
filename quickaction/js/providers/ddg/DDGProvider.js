@@ -50,13 +50,22 @@ define([
       return ADAPTER;
     },
 
-    accepts: function(filter) {
-      return filter.indexOf(ACTIVATOR) === 0 && this.adapter()(filter).trim().length > 0;
+    icon: function() {
+      return "ddg-provider";
     },
 
-    retrieve: function(filter) {
+    accepts: function(filter) {
+      return filter.indexOf(ACTIVATOR) === 0;
+    },
+
+    retrieve: _.memoize(function(filter) {
       filter= ADAPTER(filter);
       var result= $.Deferred();
+
+      if (!filter) {
+        return result.resolve(new Backbone.Collection());
+      }
+
       var ddgQuery= "//api.duckduckgo.com/?q=" + filter + "&format=json";
 
       $.get(ddgQuery,function(j) {},'jsonp')
@@ -69,7 +78,7 @@ define([
         });
 
       return result;
-    }
+    })
 
   });
 });

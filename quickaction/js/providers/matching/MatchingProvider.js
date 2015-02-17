@@ -37,6 +37,10 @@ define([
       return this._providers.any(function(provider) { return provider.debounced() });
     },
 
+    icon: function(filter) {
+      return this.matches(filter)[0].icon();
+    },
+
     retrieve: function(filter) {
       return this.matches(filter)[0].retrieve(filter);
     }

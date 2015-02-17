@@ -62,3 +62,23 @@
   right: 10px;
   top: 13px;
 }
+
+.input-group-addon.provider-icon {
+    width: 40px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-filter: grayscale(100%);
+}
+
+.input-group-addon.provider-icon.feedzilla-provider {
+    background-image: url(/js/providers/feedzilla/feedzilla.png);
+}
+
+.input-group-addon.provider-icon.ddg-provider {
+    background-image: url(/js/providers/ddg/duckduckgo.png);
+}
+
+.input-group-addon.provider-icon.nyt-provider {
+    background-image: url(/js/providers/nytimes/nyt.png);
+}

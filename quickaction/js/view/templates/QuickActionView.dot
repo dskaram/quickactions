@@ -1,5 +1,5 @@
 <div class="input-group">
-	<span class="input-group-addon" id="basic-addon1" data-toggle="popover" data-placement="bottom">@</span>
+	<span class="input-group-addon provider-icon glyphicon" id="basic-addon1" data-toggle="popover" data-placement="bottom"></span>
 	<input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
 </div>
 <div class="content-popover">

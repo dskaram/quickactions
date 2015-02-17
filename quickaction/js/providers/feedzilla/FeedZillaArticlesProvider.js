@@ -38,6 +38,8 @@ define([
           .fail(result.reject);
 
       return result;
+    }, function(filter) {
+      return this.get("categoryId") + ":" + filter;
     })
 
   });

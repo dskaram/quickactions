@@ -29,16 +29,16 @@ define([
     SELECTION: "selection-pressed",
     NAVIGATION: "navigation-pressed",
 
-    className: "main-container",
+    className: "quick-actions-main-container",
 
     events: {
-      "keydown .search-group input": "_onKeyDown",
-      "keypress .search-group input": "_onKeyPress",
-      "mousemove .listEntries": "_onMouseMove",
+      "keydown .quick-actions-search-group input": "_onKeyDown",
+      "keypress .quick-actions-search-group input": "_onKeyPress",
+      "mousemove .quick-actions-listEntries": "_onMouseMove",
       "click": "focus",
-      "click .listEntry": "_onClick",
-      "click .breadcrumb li:not(.active)": "_targetBreadcrumb",
-      "click .breadcrumb .initial": "_targetBreadcrumb"
+      "click .quick-actions-listEntry": "_onClick",
+      "click .quick-actions-breadcrumb li:not(.active)": "_targetBreadcrumb",
+      "click .quick-actions-breadcrumb .initial": "_targetBreadcrumb"
     },
 
     initialize: function(options) {
@@ -47,14 +47,14 @@ define([
       var self= this;
 
       options.global.on("change:breadcrumb", function(model, breadcrumbs) {
-        var node= self.$el.find(".breadcrumb");
+        var node= self.$el.find(".quick-actions-breadcrumb");
         node.html(Breadcrumbs(breadcrumbs));
-        node.children().last().addClass("active");
+        node.children().last().addClass("quick-actions-active");
       });
 
       this.layers.on("add", function(layer, collection, options) {
         var layerIndex= options.index;
-        var layerContainer= $("<ul class='listEntries'></ul>");
+        var layerContainer= $("<ul class='quick-actions-listEntries'></ul>");
         self.listView.append(layerContainer);
 
         layer.on("change:searchTerm", function(model, searchTerm) {
@@ -71,11 +71,11 @@ define([
         });
 
         layer.on("change:selection", function(model, index) {
-          var entries= layerContainer.find(".listEntry");
+          var entries= layerContainer.find(".quick-actions-listEntry");
           var selectedElement= entries.eq(index);
 
-          entries.removeClass("selected");
-          selectedElement.addClass("selected");
+          entries.removeClass("quick-actions-selected");
+          selectedElement.addClass("quick-actions-selected");
           selectedElement.scrollIntoViewIfNeeded();
         });
 
@@ -118,9 +118,9 @@ define([
     render: function() {
       this.$el.html(QuickActionViewTemplate({}));
 
-      this.inputBox= this.$el.find(".search-group input");
-      this.providerPlaceholder= this.$el.find(".search-group .search-group-addon");
-      this.listView= this.$el.find(".list-view");
+      this.inputBox= this.$el.find(".quick-actions-search-group input");
+      this.providerPlaceholder= this.$el.find(".quick-actions-search-group .quick-actions-search-group-addon");
+      this.listView= this.$el.find(".quick-actions-list-view");
       return this;
     },
 
@@ -173,7 +173,7 @@ define([
 
   	_onMouseMove: function(e) {
   		Keys.stopEvent(e);
-  		this.trigger(this.SELECTION, $(e.target).closest(".listEntry").index());
+  		this.trigger(this.SELECTION, $(e.target).closest(".quick-actions-listEntry").index());
   	},
 
     _onKeyPress: function(e) {

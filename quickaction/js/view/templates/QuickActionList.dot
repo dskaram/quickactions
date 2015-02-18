@@ -1,6 +1,6 @@
 {{~it.entries :value:index}}
-	<li class="listEntry{{? index == it.selection }} selected{{?}}">
+	<li class="quick-actions-listEntry{{? index == it.selection }} quick-actions-selected{{?}}">
 		{{= value.label }}
-		{{? value.isProvider }}<span class="provider-icon"></span>{{?}}
+		{{? value.isProvider }}<span class="quick-actions-provider-icon"></span>{{?}}
 	</li>
 {{~}}

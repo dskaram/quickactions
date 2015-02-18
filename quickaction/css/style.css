@@ -1,36 +1,36 @@
-.main-container {
+.quick-actions-main-container {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
   width: 500px;
-  margin: 100px auto;
   border-radius: 15px;
 }
 
-.main-container * {
+.quick-actions-main-container * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-.main-container > * {
+.quick-actions-main-container > * {
   width: 100%;
 }
 
-.content-popover {
+.quick-actions-content-popover {
     position: relative;
     top: 10px;
+    background: white;
     border-radius: 5px;
     border: 1px solid #cacaca;
     border-radius: 4px;
 }
 
-.list-view {
+.quick-actions-list-view {
   position: relative;
   height: 400px;
   overflow: hidden;
 }
 
-.list-view .listEntries {
+.quick-actions-list-view .quick-actions-listEntries {
   position: absolute;
   top: 0px;
   width: 100%;
@@ -42,31 +42,31 @@
   transition: transform 0.3s ease-out;
 }
 
-.list-view .listEntries .listEntry {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry {
   position: relative;
 	cursor: pointer;
   width: 100%;
   padding: 10px;
 }
 
-.list-view .listEntries .listEntry.selected {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry.quick-actions-selected {
   background: #3b88c3;
   color: white;
 }
 
-.list-view .listEntries .listEntry .matched {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry .quick-actions-matched {
   font-weight: bold;
   text-decoration: underline;
 }
 
-.list-view .listEntries .listEntry .provider-icon {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry .quick-actions-provider-icon {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-.list-view .listEntries .listEntry .provider-icon,
-.list-view .listEntries .listEntry .provider-icon:before {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry .quick-actions-provider-icon,
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry .quick-actions-provider-icon:before {
   width: 0;
   height: 0;
   border-top: 8px solid transparent;
@@ -75,7 +75,7 @@
   border-left: 8px solid #333;
 }
 
-.list-view .listEntries .listEntry .provider-icon:before {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry .quick-actions-provider-icon:before {
     content: "";
     position: absolute;
     top: -8px;
@@ -83,15 +83,15 @@
     border-left-color: white;
 }
 
-.list-view .listEntries .listEntry.selected .provider-icon {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry.quick-actions-selected .quick-actions-provider-icon {
   border-left-color: white;
 }
 
-.list-view .listEntries .listEntry.selected .provider-icon:before {
+.quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry.quick-actions-selected .quick-actions-provider-icon:before {
   border-left-color: #3b88c3;
 }
 
-.content-popover .breadcrumb {
+.quick-actions-content-popover .quick-actions-breadcrumb {
     padding: 8px 15px;
     margin-bottom: 20px;
     list-style: none;
@@ -99,43 +99,43 @@
     border-radius: 4px
 }
 
-.content-popover .breadcrumb > li {
+.quick-actions-content-popover .quick-actions-breadcrumb > li {
     display: inline-block
 }
 
-.content-popover .breadcrumb > li+li:before {
+.quick-actions-content-popover .quick-actions-breadcrumb > li+li:before {
     padding: 0 5px;
     color: #ccc;
     content: "/\00a0"
 }
 
-.content-popover .breadcrumb > .active {
+.quick-actions-content-popover .quick-actions-breadcrumb > .active {
     color: #777
 }
 
-.content-popover .breadcrumb a {
+.quick-actions-content-popover .quick-actions-breadcrumb a {
     color: #337ab7;
     text-decoration: none
 }
 
-.content-popover .breadcrumb a:focus,
-.content-popover .breadcrumb a:hover {
+.quick-actions-content-popover .quick-actions-breadcrumb a:focus,
+.quick-actions-content-popover .quick-actions-breadcrumb a:hover {
     color: #23527c;
     text-decoration: underline
 }
 
-.content-popover .breadcrumb a:focus {
+.quick-actions-content-popover .quick-actions-breadcrumb a:focus {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px
 }
 
-.search-group > * {
+.quick-actions-search-group > * {
   height: 35px;
   vertical-align: middle;
 }
 
-.search-group input {
+.quick-actions-search-group input {
   width: calc(100% - 40px);
   display: inline-block;
   padding: 8px;
@@ -145,13 +145,13 @@
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
 }
 
-.search-group input:focus {
+.quick-actions-search-group input:focus {
     border-color: #66afe9;
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 5px rgba(102,175,233,.6)
 }
 
-.search-group-addon.provider-icon {
+.quick-actions-search-group-addon.quick-actions-provider-icon {
     display: inline-block;
     width: 40px;
     background: #f5f5f5;

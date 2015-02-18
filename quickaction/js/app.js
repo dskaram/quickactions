@@ -41,6 +41,7 @@ require(
     $(function() {
       QuickAction
         .create($("#demo"))
+        .baseUrl("/")
         .provider(new MatchingProvider()
                         .add(new DDGProvider())
                         .add(new FeedZillaCategoryProvider())

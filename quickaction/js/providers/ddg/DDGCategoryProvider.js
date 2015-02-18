@@ -18,7 +18,7 @@ define([
     },
 
     icon: function() {
-      return "ddg-provider";
+      return "js/providers/ddg/duckduckgo.png";
     },
 
     retrieve: function(filter) {

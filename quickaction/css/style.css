@@ -167,19 +167,3 @@
     background-position: center center;
     -webkit-filter: grayscale(100%);
 }
-
-.search-group-addon.provider-icon.files-provider {
-    background-image: url(/js/providers/fs/files.png);
-}
-
-.search-group-addon.provider-icon.feedzilla-provider {
-    background-image: url(/js/providers/feedzilla/feedzilla.png);
-}
-
-.search-group-addon.provider-icon.ddg-provider {
-    background-image: url(/js/providers/ddg/duckduckgo.png);
-}
-
-.search-group-addon.provider-icon.nyt-provider {
-    background-image: url(/js/providers/nytimes/nyt.png);
-}

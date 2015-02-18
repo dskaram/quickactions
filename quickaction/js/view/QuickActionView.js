@@ -62,9 +62,7 @@ define([
         });
 
         layer.on("change:providerIcon", function(model, providerIcon) {
-          self.providerPlaceholder.removeClass(this.prevIcon);
-          self.providerPlaceholder.addClass(providerIcon);
-          this.prevIcon= providerIcon;
+          self.providerPlaceholder.css("background-image", "url(" + providerIcon + ")");
         });
 
         layer.on("change:shown", function(model, shown) {

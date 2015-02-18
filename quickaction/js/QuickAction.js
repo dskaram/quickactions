@@ -29,7 +29,9 @@ define([
 
 		initialize: function(global, layers, view) {
 			this._bindViewEvents(global, layers, view);
+			this._baseUrl= "";
 
+			var self= this;
 			var providers= this._providers= new Backbone.Collection();
 			ListBindings.bindWithAdapter(providers, layers, function(provider) {
 				var layer= new LayerViewModel();
@@ -37,7 +39,7 @@ define([
 				layer.set("searchAdapter", provider.adapter());
 				var debounceSearch= provider.debounced() ? _.debounce : _.identity;
 				layer.on("change:searchTerm", debounceSearch.call(_, function(model, searchTerm) {
-					layer.set("providerIcon", provider.icon(searchTerm));
+					layer.set("providerIcon", self._baseUrl + provider.icon(searchTerm));
 					provider
 							.retrieve(searchTerm)
 							.done(_.bind(function(entries) {
@@ -79,6 +81,11 @@ define([
 			};
 			providers.on("add", updateResults);
 			providers.on("remove", updateResults);
+		},
+
+		baseUrl: function(baseUrl) {
+			this._baseUrl= baseUrl;
+			return this;
 		},
 
 		provider: function(defaultProvider) {

@@ -25,7 +25,7 @@ define([
     },
 
     icon: function() {
-      return "files-provider";
+      return "js/providers/fs/files.png";
     },
 
     retrieve: function(filter) {

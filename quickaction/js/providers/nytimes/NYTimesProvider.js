@@ -32,7 +32,7 @@ define([
     },
 
     icon: function() {
-      return "nyt-provider";
+      return "js/providers/nytimes/nyt.png";
     },
 
     retrieve: _.memoize(function(filter) {

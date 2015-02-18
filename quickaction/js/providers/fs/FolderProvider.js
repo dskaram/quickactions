@@ -25,7 +25,7 @@ define([
     },
 
     icon: function() {
-      return "glyphicon-file";
+      return "files-provider";
     },
 
     retrieve: function(filter) {

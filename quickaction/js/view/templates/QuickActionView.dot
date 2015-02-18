@@ -1,6 +1,6 @@
-<div class="input-group">
-	<span class="input-group-addon provider-icon glyphicon" id="basic-addon1" data-toggle="popover" data-placement="bottom"></span>
-	<input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+<div class="search-group">
+	<span class="search-group-addon provider-icon" id="basic-addon1"></span>
+	<input type="text" placeholder="Search" aria-describedby="basic-addon1">
 </div>
 <div class="content-popover">
 	<ol class="breadcrumb">

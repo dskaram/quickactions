@@ -32,8 +32,8 @@ define([
     className: "main-container",
 
     events: {
-      "keydown .input-group input": "_onKeyDown",
-      "keypress .input-group input": "_onKeyPress",
+      "keydown .search-group input": "_onKeyDown",
+      "keypress .search-group input": "_onKeyPress",
       "mousemove .listEntries": "_onMouseMove",
       "click": "focus",
       "click .listEntry": "_onClick",
@@ -120,8 +120,8 @@ define([
     render: function() {
       this.$el.html(QuickActionViewTemplate({}));
 
-      this.inputBox= this.$el.find(".input-group input");
-      this.providerPlaceholder= this.$el.find(".input-group .input-group-addon");
+      this.inputBox= this.$el.find(".search-group input");
+      this.providerPlaceholder= this.$el.find(".search-group .search-group-addon");
       this.listView= this.$el.find(".list-view");
       return this;
     },

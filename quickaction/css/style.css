@@ -1,4 +1,6 @@
 .main-container {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
   width: 500px;
   margin: 100px auto;
   border-radius: 15px;
@@ -60,25 +62,124 @@
 .list-view .listEntries .listEntry .provider-icon {
   position: absolute;
   right: 10px;
-  top: 13px;
+  top: 10px;
 }
 
-.input-group-addon.provider-icon {
+.list-view .listEntries .listEntry .provider-icon,
+.list-view .listEntries .listEntry .provider-icon:before {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+
+  border-left: 8px solid #333;
+}
+
+.list-view .listEntries .listEntry .provider-icon:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 2px;
+    border-left-color: white;
+}
+
+.list-view .listEntries .listEntry.selected .provider-icon {
+  border-left-color: white;
+}
+
+.list-view .listEntries .listEntry.selected .provider-icon:before {
+  border-left-color: #3b88c3;
+}
+
+.content-popover .breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px
+}
+
+.content-popover .breadcrumb > li {
+    display: inline-block
+}
+
+.content-popover .breadcrumb > li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0"
+}
+
+.content-popover .breadcrumb > .active {
+    color: #777
+}
+
+.content-popover .breadcrumb a {
+    color: #337ab7;
+    text-decoration: none
+}
+
+.content-popover .breadcrumb a:focus,
+.content-popover .breadcrumb a:hover {
+    color: #23527c;
+    text-decoration: underline
+}
+
+.content-popover .breadcrumb a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px
+}
+
+.search-group > * {
+  height: 35px;
+  vertical-align: middle;
+}
+
+.search-group input {
+  width: calc(100% - 40px);
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid #cacaca;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.search-group input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 5px rgba(102,175,233,.6)
+}
+
+.search-group-addon.provider-icon {
+    display: inline-block;
     width: 40px;
+    background: #f5f5f5;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #cacaca;
+    border-right-width: 0px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: center center;
     -webkit-filter: grayscale(100%);
 }
 
-.input-group-addon.provider-icon.feedzilla-provider {
+.search-group-addon.provider-icon.files-provider {
+    background-image: url(/js/providers/fs/files.png);
+}
+
+.search-group-addon.provider-icon.feedzilla-provider {
     background-image: url(/js/providers/feedzilla/feedzilla.png);
 }
 
-.input-group-addon.provider-icon.ddg-provider {
+.search-group-addon.provider-icon.ddg-provider {
     background-image: url(/js/providers/ddg/duckduckgo.png);
 }
 
-.input-group-addon.provider-icon.nyt-provider {
+.search-group-addon.provider-icon.nyt-provider {
     background-image: url(/js/providers/nytimes/nyt.png);
 }

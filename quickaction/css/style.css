@@ -2,7 +2,13 @@
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
   width: 500px;
-  border-radius: 15px;
+  height: 450px;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+
+.quick-actions-main-container.quick-actions-closed {
+  height: 40px;
 }
 
 .quick-actions-main-container * {
@@ -23,12 +29,6 @@
   background: white;
   border: 1px solid #cacaca;
   border-radius: 4px;
-  transition: all 0.35s ease;
-}
-
-.quick-actions-closed .quick-actions-content-popover {
-  height: 0px;
-  border-width: 0px;
 }
 
 .quick-actions-list-view {
@@ -51,7 +51,7 @@
 
 .quick-actions-list-view .quick-actions-listEntries .quick-actions-listEntry {
   position: relative;
-	cursor: pointer;
+  cursor: pointer;
   width: 100%;
   padding: 10px;
 }

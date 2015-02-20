@@ -42,9 +42,10 @@ require(
           QuickAction
   ) {
     $(function() {
+      var open= new Property(true);
       QuickAction
         .create($("#demo").css("margin", "100px"))
-        .open(new Property(true))
+        .open(open)
         .provider(new MatchingProvider()
                         .add(new DDGProvider())
                         .add(new FeedZillaCategoryProvider())

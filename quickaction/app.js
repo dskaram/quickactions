@@ -24,6 +24,7 @@ require(
     "underscore",
     "backbone",
     "util/ScrollIntoView",
+    "util/Property",
     "providers/matching/MatchingProvider",
     "providers/ddg/DDGProvider",
     "providers/feedzilla/FeedZillaCategoryProvider",
@@ -32,6 +33,7 @@ require(
     "QuickAction"
   ],
   function($, _, B, SIV,
+          Property,
           MatchingProvider,
           DDGProvider,
           FeedZillaCategoryProvider,
@@ -41,8 +43,8 @@ require(
   ) {
     $(function() {
       QuickAction
-        .create($("#demo"))
-        .baseUrl("/")
+        .create($("#demo").css("margin", "100px"))
+        .open(new Property(true))
         .provider(new MatchingProvider()
                         .add(new DDGProvider())
                         .add(new FeedZillaCategoryProvider())

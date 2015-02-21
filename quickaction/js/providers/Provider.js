@@ -28,7 +28,7 @@ define([
 		},
 
 		icon: function() {
-			return "glyphicon-search";
+			return "";
 		},
 
 		retrieve: function(filter) {

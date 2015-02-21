@@ -1,13 +1,11 @@
 define([
   "underscore",
   "backbone",
-  "providers/ddg/DDGCategoryProvider",
   "providers/Provider",
 	"providers/ProviderEntry"
 ], function(
   _,
   Backbone,
-  DDGCategoryProvider,
   Provider,
 	ProviderEntry
 ) {
@@ -25,7 +23,7 @@ define([
     },
 
     icon: function() {
-      return "js/providers/fs/files.png";
+      return "providers/fs/files.png";
     },
 
     retrieve: function(filter) {

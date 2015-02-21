@@ -43,7 +43,7 @@ define([
 		},
 
 		retrieve: function(filter) {
-			$.Deferred().resolve(new Backbone.Collection());
+			return $.Deferred().resolve(new Backbone.Collection());
 		}
 	});
 

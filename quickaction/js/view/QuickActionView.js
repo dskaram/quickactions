@@ -2,7 +2,7 @@ define([
   "underscore",
   "backbone",
   "util/Bindings",
-  "view/Keys",
+  "util/Keys",
   "view/Matcher",
   "view/Selection",
   "view/Navigation",
@@ -74,6 +74,7 @@ define([
 
       Bindings.bind(this.viewModel, "open", function(model, open) {
         self.$el.toggleClass("quick-actions-closed", !open);
+        if (open) self.focus();
       });
 
       this.layers.on("add", function(layer, collection, options) {

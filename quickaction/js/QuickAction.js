@@ -44,7 +44,9 @@ define([
 				layer.set("searchAdapter", provider.adapter());
 				var debounceSearch= provider.debounced() ? _.debounce : _.identity;
 				layer.on("change:searchTerm", debounceSearch.call(_, function(model, searchTerm) {
-					layer.set("providerIcon", self._baseUrl + provider.icon(searchTerm));
+					var providerIcon= provider.icon(searchTerm);
+					layer.set("providerIcon", providerIcon ? self._baseUrl + providerIcon : "");
+
 					provider
 							.retrieve(searchTerm)
 							.done(_.bind(function(entries) {

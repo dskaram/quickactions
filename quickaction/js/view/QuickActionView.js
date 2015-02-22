@@ -87,9 +87,7 @@ define([
         });
 
         layer.on("change:providerIcon", function(model, providerIcon) {
-          if (!providerIcon) {
-            self.providerPlaceholder.css("background-image", "url(" + providerIcon + ")");
-          }
+          self.providerPlaceholder.css("background-image", "url(" + providerIcon + ")");
         });
 
         layer.on("change:shown", function(model, shown) {

@@ -56,6 +56,24 @@ define([
       this.listView= this.$el.find(".quick-actions-list-view");
 
       this._bindViewModel();
+
+      this.on(this.NAVIGATION, _.bind(function(direction) {
+        if (direction === Navigation.EXECUTE) {
+          var activeLayer= this.layers.active();
+          var currentSelection= activeLayer.get("selection");
+          var entry= activeLayer.get("entries").at(currentSelection);
+
+          if (!entry.isProvider()) {
+            var selectedNode= this.listView.children().eq(this.layers.length - 1).children().eq(currentSelection);
+            selectedNode.addClass("quickactions-tap-effect");
+            setTimeout(function() {
+              selectedNode.removeClass("quickactions-tap-effect");
+            }, 100);
+          }
+        }
+      }, this));
+
+
       return this;
     },
 

@@ -27,6 +27,7 @@ define([
   return Backbone.View.extend({
 
     KEY: "key-pressed",
+    BLURRED: "view-blurred",
     BACKSPACE: "backspace-pressed",
     SELECTION: "selection-pressed",
     NAVIGATION: "navigation-pressed",
@@ -34,10 +35,10 @@ define([
     className: "quick-actions-main-container",
 
     events: {
+      "blur .quick-actions-search-group input": "_onBlur",
       "keydown .quick-actions-search-group input": "_onKeyDown",
       "keypress .quick-actions-search-group input": "_onKeyPress",
       "mousemove .quick-actions-listEntry": "_onMouseMove",
-      "click": "focus",
       "click .quick-actions-listEntry": "_onClick",
       "click .quick-actions-breadcrumb li:not(.active)": "_targetBreadcrumb",
       "click .quick-actions-breadcrumb .initial": "_targetBreadcrumb"
@@ -219,13 +220,21 @@ define([
       }
     },
 
+    _onBlur: function(e) {
+      if ($('.quick-actions-main-container:hover').length !== 0) {
+        this.focus();
+      } else {
+        this.trigger(this.BLURRED);
+      }
+    },
+
   	_onClick: function(e) {
-      // do not stop propagation. parent needs to refocus
+      Keys.stopEvent(e);
   		this.trigger(this.NAVIGATION, Navigation.EXECUTE);
   	},
 
     _targetBreadcrumb: function(e) {
-      // do not stop propagation. parent needs to refocus
+      Keys.stopEvent(e);
       this.layers.length > 1 && this.trigger(this.NAVIGATION, this.layers.length - $(e.target).parent().index() - 1);
     },
 

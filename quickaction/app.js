@@ -23,7 +23,6 @@ require(
   ["jquery",
     "underscore",
     "backbone",
-    "util/ScrollIntoView",
     "util/Property",
     "providers/matching/MatchingProvider",
     "/providers/ddg/DDGProvider.js",
@@ -32,7 +31,7 @@ require(
     "/providers/nytimes/NYTimesProvider.js",
     "QuickAction"
   ],
-  function($, _, B, SIV,
+  function($, _, B,
           Property,
           MatchingProvider,
           DDGProvider,

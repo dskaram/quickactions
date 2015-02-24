@@ -119,7 +119,7 @@ define([
 
           entries.removeClass("quick-actions-selected");
           selectedElement.addClass("quick-actions-selected");
-          selectedElement.scrollIntoViewIfNeeded();
+          self._showElement(selectedElement);
         });
 
         layer.on("change:entries", function(model, entries) {
@@ -155,6 +155,30 @@ define([
         removed.css("transform", "translateX(" + 100 + "%)");
           // destroy all listeners
       });
+    },
+
+    _showElement: document.createElement('div').scrollIntoViewIfNeeded ?
+      function($el) {
+        $el[0].scrollIntoViewIfNeeded();
+      } :
+      function() {
+        var elTop, elBottom, menuScrollTop, menuHeight;
+        var $menu= $el.parent();
+
+        elTop = $el.position().top;
+        elBottom = elTop + $el.outerHeight(true);
+        menuScrollTop = $menu.scrollTop();
+        menuHeight = $menu.height() +
+          parseInt($menu.css('paddingTop'), 10) +
+          parseInt($menu.css('paddingBottom'), 10);
+
+        if (elTop < 0) {
+          $menu.scrollTop(menuScrollTop + elTop);
+        }
+
+        else if (menuHeight < elBottom) {
+          $menu.scrollTop(menuScrollTop + (elBottom - menuHeight));
+        }
     },
 
     _onKeyDown: function(e) {

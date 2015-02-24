@@ -161,7 +161,7 @@ define([
       function($el) {
         $el[0].scrollIntoViewIfNeeded();
       } :
-      function() {
+      function($el) {
         var elTop, elBottom, menuScrollTop, menuHeight;
         var $menu= $el.parent();
 
@@ -183,6 +183,11 @@ define([
 
     _onKeyDown: function(e) {
       switch(e.which) {
+          case Keys.SPACE:
+              if (this.inputBox.val().trim() === "") {
+                Keys.stopEvent(e);
+              }
+              break;
           case Keys.BACKSPACE:
               Keys.stopEvent(e);
               this.trigger(this.BACKSPACE);

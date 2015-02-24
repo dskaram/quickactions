@@ -1,0 +1,16 @@
+Extensions
+   Todo
+   Server based bookmarks
+   Ibm watson queries
+   Gmail
+   Nyt popular articles on empty string
+
+
+Design
+   add icons
+   color -- code pen
+
+
+Core
+   all providers should return promises and not deferreds
+   failure handling

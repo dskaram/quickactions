@@ -47,7 +47,6 @@ define([
 				layer.on("change:searchTerm", debounceSearch.call(_, function(model, searchTerm) {
 					var providerIcon= provider.icon(searchTerm);
 					layer.set("providerIcon", providerIcon ? self._baseUrl + providerIcon : "");
-					self._open.set(true)
 
 					provider
 							.retrieve(searchTerm)

@@ -4,7 +4,10 @@ Extensions
    Ibm watson queries
    Gmail
    Nyt popular articles on empty string
-
+   Chrome provider
+      Revert to google search for empty result set
+      Show labels and URLs
+   import.io
 
 Design
    add icons
@@ -12,5 +15,8 @@ Design
 
 
 Core
+   open with "?" on selected text
    all providers should return promises and not deferreds
    failure handling
+   empty sections
+   index check on _showElement
